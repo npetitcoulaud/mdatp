@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -12,8 +13,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = [ cfg.package ];
-    systemd.packages = [ cfg.package ];
+    environment.systemPackages = [ pkgs.mdatp ];
+    systemd.packages = [ pkgs.mdatp ];
     users.users.mdatp = {
       group = "mdatp";
       isSystemUser = true;
