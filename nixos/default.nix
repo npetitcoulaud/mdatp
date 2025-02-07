@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   lib,
   ...
 }:
@@ -10,7 +9,6 @@ in
 {
   options.services.mdatp = {
     enable = lib.mkEnableOption "mdatp";
-    package = lib.mkPackageOption pkgs "mdatp";
   };
 
   config = lib.mkIf cfg.enable {
