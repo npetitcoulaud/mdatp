@@ -10,11 +10,12 @@ in
 {
   options.services.mdatp = {
     enable = lib.mkEnableOption "mdatp";
+    package = lib.mkPackageOption pkgs "mdatp" { };
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = [ pkgs.mdatp ];
-    systemd.packages = [ pkgs.mdatp ];
+    environment.systemPackages = [ cfg.package ];
+    systemd.packages = [ cfg.package ];
     users.users.mdatp = {
       group = "mdatp";
       isSystemUser = true;
