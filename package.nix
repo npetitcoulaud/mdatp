@@ -9,7 +9,8 @@
   lib,
   fetchurl,
   dpkg,
-  makeWrapper,
+  gnugrep,
+  deterministic-uname,
   ...
 }:
 let
@@ -34,6 +35,10 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ dpkg ];
+  buildInputs = [
+    gnugrep
+    deterministic-uname
+  ];
 
   buildPhase = ''
     runHook preBuild
